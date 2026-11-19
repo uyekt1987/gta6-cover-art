@@ -1,5 +1,1 @@
-[
-  { "name": "1-cover.jpg", "query": "?shot=cover&photo=pier&caption=Sunset%20Heist", "w": 1080, "h": 1080 },
-  { "name": "2-editor.jpg", "query": "?shot=editor&photo=boulevard&caption=Boulevard%20Queen", "w": 1280, "h": 720 },
-  { "name": "3-cover.jpg", "query": "?shot=cover&photo=boulevard&caption=Boulevard%20Queen", "w": 1080, "h": 1080 }
-]
+{"app":"Vice Cover Studio","shots":[{"cover":"1920x1080 landscape, Sunset Strip layout, Sunset grade, caption Neon Nights","file":"1-cover.jpg","kind":"exported cover","pixels":"1280x720"},{"cover":"app with the Boulevard photo loaded, panels and controls visible","file":"2-editor.jpg","kind":"editor in browser","pixels":"1280x720"},{"cover":"1080x1350 portrait, Neon Grid layout, Neon grade, caption Palm & Chrome","file":"3-cover.jpg","kind":"exported cover","pixels":"1024x1280"},{"cover":"1080x1080 square, Vice Trio layout, Dusk grade, caption Golden Hour","file":"4-cover.jpg","kind":"exported cover","pixels":"1024x1024"}]}

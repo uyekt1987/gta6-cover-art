@@ -3,21 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Cover Snap</title>
-<link rel="stylesheet" href="./style.css">
+<title>Vice Cover Studio — GTA-style cover art maker</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff2daa'/%3E%3Ccircle cx='16' cy='19' r='7' fill='%23ffd23f'/%3E%3Crect x='6' y='8' width='20' height='3' fill='white'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>Cover Snap</h1>
-    <p>A photo and a caption, made into a square cover.</p>
-    <label>Photo <input id="photo" type="file" accept="image/*"></label>
-    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
-    <button id="export" type="button">Export PNG 1080 x 1080</button>
-    <p id="status" role="status"></p>
+<header class="top">
+  <div>
+    <h1>VICE COVER STUDIO</h1>
+    <p class="tagline">Turn your photo and a caption into poster cover art.
+      Your photos never leave this machine.</p>
+  </div>
+  <div class="top-badge">POSTER MAKER</div>
+</header>
+
+<main class="layout">
+  <aside class="panel" aria-label="Editor controls">
+    <section>
+      <h2>1 · Photos</h2>
+      <p class="hint">Pick a sample, or upload your own photo. It goes into the
+        selected panel — drag the preview to move it, scroll to zoom.</p>
+      <div class="samples" id="sampleBar">
+        <button type="button" class="sample-btn" data-sample="samples/boulevard.jpg">
+          <img src="samples/boulevard.jpg" alt="Sunset boulevard sample">
+          <span>Boulevard</span>
+        </button>
+        <button type="button" class="sample-btn" data-sample="samples/pier.jpg">
+          <img src="samples/pier.jpg" alt="Neon pier sample">
+          <span>Neon pier</span>
+        </button>
+        <button type="button" class="sample-btn" data-sample="samples/skyline.jpg">
+          <img src="samples/skyline.jpg" alt="Dusk skyline sample">
+          <span>Skyline</span>
+        </button>
+      </div>
+      <div class="row">
+        <button type="button" class="btn" id="uploadBtn">Upload a photo…</button>
+        <button type="button" class="btn ghost" id="fillAllBtn">Fill all panels</button>
+      </div>
+      <input type="file" id="photoFile" accept="image/*" hidden>
+    </section>
+
+    <section>
+      <h2>2 · Panels</h2>
+      <p class="hint">Click a panel to select it, then zoom or centre its photo.</p>
+      <div id="panelList"></div>
+    </section>
+
+    <section>
+      <h2>3 · Look</h2>
+      <div class="btn-grid" id="layoutBtns" role="group" aria-label="Layout"></div>
+      <div class="swatches" id="gradeBtns" role="group" aria-label="Colour grade"></div>
+      <p class="hint" id="lookHint"></p>
+    </section>
+
+    <section>
+      <h2>4 · Words</h2>
+      <label class="field">Caption
+        <input type="text" id="captionInput" maxlength="48"
+          value="Neon Nights" autocomplete="off">
+      </label>
+      <label class="field">Sub-caption
+        <input type="text" id="subInput" maxlength="64"
+          value="Shot on the boulevard at dusk" autocomplete="off">
+      </label>
+      <div class="swatches" id="colorBtns" role="group" aria-label="Caption colour"></div>
+      <div class="btn-grid" id="posBtns" role="group" aria-label="Caption position">
+        <button type="button" class="btn small" data-pos="top">Top</button>
+        <button type="button" class="btn small" data-pos="bottom">Bottom</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>5 · Size &amp; export</h2>
+      <div class="btn-grid" id="sizeBtns" role="group" aria-label="Export size"></div>
+      <button type="button" class="btn big" id="exportBtn">Export PNG</button>
+      <p class="hint">The PNG is saved to your downloads, in the size above.
+        Nothing is uploaded anywhere.</p>
+      <p class="status" id="status" role="status">Loading…</p>
+    </section>
+  </aside>
+
+  <section class="stage" aria-label="Live preview">
+    <div class="canvas-wrap" id="previewWrap">
+      <canvas id="preview"></canvas>
+    </div>
+    <p class="hint centre">Live preview — click a panel to select it, drag to move
+      its photo, scroll to zoom. The exported PNG looks exactly like this.</p>
   </section>
-  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
 </main>
-<script type="module" src="./src/main.js"></script>
+
+<script type="module" src="src/main.js"></script>
 </body>
 </html>
